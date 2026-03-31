@@ -126,3 +126,126 @@ dear    1
 river   2
 
 C:\Windows\System32>
+
+
+
+
+
+C:\Windows\System32>hdfs dfs -put "C:\Users\gauta\OneDrive\Documents\Desktop\file1.txt" /user/gauta/My_folder/
+
+C:\Windows\System32>hdfs dfs -ls /user/gauta/My_folder/
+Found 3 items
+-rw-r--r--   1 gauta supergroup        212 2026-03-31 15:18 /user/gauta/My_folder/file1.txt
+-rw-r--r--   1 gauta supergroup         45 2026-03-31 15:05 /user/gauta/My_folder/mapreduce.txt
+drwxr-xr-x   - gauta supergroup          0 2026-03-31 15:07 /user/gauta/My_folder/output
+
+C:\Windows\System32>hadoop jar "C:\hadoop\share\hadoop\mapreduce\hadoop-mapreduce-examples-3.3.6.jar" wordcount /user/gauta/My_folder/file1.txt /user/gauta/My_folder/output1
+2026-03-31 15:19:43,897 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2026-03-31 15:19:44,488 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/gauta/.staging/job_1774949379395_0002
+2026-03-31 15:19:44,704 INFO input.FileInputFormat: Total input files to process : 1
+2026-03-31 15:19:44,828 INFO mapreduce.JobSubmitter: number of splits:1
+2026-03-31 15:19:44,971 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1774949379395_0002
+2026-03-31 15:19:44,971 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-03-31 15:19:45,100 INFO conf.Configuration: resource-types.xml not found
+2026-03-31 15:19:45,101 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-03-31 15:19:45,411 INFO impl.YarnClientImpl: Submitted application application_1774949379395_0002
+2026-03-31 15:19:45,453 INFO mapreduce.Job: The url to track the job: http://Dell:8088/proxy/application_1774949379395_0002/
+2026-03-31 15:19:45,454 INFO mapreduce.Job: Running job: job_1774949379395_0002
+2026-03-31 15:19:54,685 INFO mapreduce.Job: Job job_1774949379395_0002 running in uber mode : false
+2026-03-31 15:19:54,687 INFO mapreduce.Job:  map 0% reduce 0%
+2026-03-31 15:19:59,806 INFO mapreduce.Job:  map 100% reduce 0%
+2026-03-31 15:20:05,897 INFO mapreduce.Job:  map 100% reduce 100%
+2026-03-31 15:20:05,917 INFO mapreduce.Job: Job job_1774949379395_0002 completed successfully
+2026-03-31 15:20:06,152 INFO mapreduce.Job: Counters: 54
+        File System Counters
+                FILE: Number of bytes read=279
+                FILE: Number of bytes written=555675
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=329
+                HDFS: Number of bytes written=189
+                HDFS: Number of read operations=8
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Launched reduce tasks=1
+                Data-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=2700
+                Total time spent by all reduces in occupied slots (ms)=2988
+                Total time spent by all map tasks (ms)=2700
+                Total time spent by all reduce tasks (ms)=2988
+                Total vcore-milliseconds taken by all map tasks=2700
+                Total vcore-milliseconds taken by all reduce tasks=2988
+                Total megabyte-milliseconds taken by all map tasks=2764800
+                Total megabyte-milliseconds taken by all reduce tasks=3059712
+        Map-Reduce Framework
+                Map input records=5
+                Map output records=31
+                Map output bytes=333
+                Map output materialized bytes=279
+                Input split bytes=117
+                Combine input records=31
+                Combine output records=21
+                Reduce input groups=21
+                Reduce shuffle bytes=279
+                Reduce input records=21
+                Reduce output records=21
+                Spilled Records=42
+                Shuffled Maps =1
+                Failed Shuffles=0
+                Merged Map outputs=1
+                GC time elapsed (ms)=85
+                CPU time spent (ms)=981
+                Physical memory (bytes) snapshot=542633984
+                Virtual memory (bytes) snapshot=788070400
+                Total committed heap usage (bytes)=434634752
+                Peak Map Physical memory (bytes)=319721472
+                Peak Map Virtual memory (bytes)=446988288
+                Peak Reduce Physical memory (bytes)=222924800
+                Peak Reduce Virtual memory (bytes)=341217280
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters
+                Bytes Read=212
+        File Output Format Counters
+                Bytes Written=189
+
+C:\Windows\System32>hdfs dfs -ls /user/gauta/My_folder/output1
+Found 2 items
+-rw-r--r--   1 gauta supergroup          0 2026-03-31 15:20 /user/gauta/My_folder/output1/_SUCCESS
+-rw-r--r--   1 gauta supergroup        189 2026-03-31 15:20 /user/gauta/My_folder/output1/part-r-00000
+
+C:\Windows\System32>hdfs dfs -cat /user/gauta/My_folder/output1/part-r-00000
+Big     1
+Hadoop  4
+Hadoop. 2
+MapReduce       3
+a       2
+and     1
+big     1
+data    2
+distributed     1
+for     1
+framework.      1
+in      1
+is      3
+model   1
+processing.     1
+programming     1
+requires        1
+scalable        1
+storage 1
+systems.        1
+used    1
+
+C:\Windows\System32>
+
+
