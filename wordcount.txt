@@ -1,0 +1,128 @@
+icrosoft Windows [Version 10.0.26200.8039]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>C:\hadoop\sbin
+'C:\hadoop\sbin' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Windows\System32>start-all.cmd
+This script is Deprecated. Instead use start-dfs.cmd and start-yarn.cmd
+starting yarn daemons
+
+C:\Windows\System32>jps
+18628 DataNode
+7492 NodeManager
+4824 Jps
+9292 ResourceManager
+9612 NameNode
+
+C:\Windows\System32>hdfs dfs -mkdir /user/gauta/My_folder
+
+C:\Windows\System32>hdfs dfs -ls /user/gauta/
+Found 2 items
+drwxr-xr-x   - gauta supergroup          0 2026-03-24 15:28 /user/gauta/Ajay
+drwxr-xr-x   - gauta supergroup          0 2026-03-31 15:02 /user/gauta/My_folder
+
+C:\Windows\System32>hdfs dfs -put "C:\Users\gauta\OneDrive\Documents\Desktop\mapreduce.txt" /user/gauta/My_folder/
+
+C:\Windows\System32>hdfs dfs -ls /user/gauta/My_folder/
+Found 1 items
+-rw-r--r--   1 gauta supergroup         45 2026-03-31 15:05 /user/gauta/My_folder/mapreduce.txt
+
+C:\Windows\System32>hdfs dfs -cat /user/gauta/My_folder/mapreduce.txt
+Dear bear river
+Car Car river
+bear dear car
+C:\Windows\System32>hadoop jar "C:\hadoop\share\hadoop\mapreduce\hadoop-mapreduce-examples-3.3.6.jar" wordcount /user/gauta/My_folder/mapreduce.txt /user/gauta/My_folder/output
+2026-03-31 15:07:35,147 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at /0.0.0.0:8032
+2026-03-31 15:07:35,853 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/gauta/.staging/job_1774949379395_0001
+2026-03-31 15:07:36,099 INFO input.FileInputFormat: Total input files to process : 1
+2026-03-31 15:07:36,213 INFO mapreduce.JobSubmitter: number of splits:1
+2026-03-31 15:07:36,353 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1774949379395_0001
+2026-03-31 15:07:36,353 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2026-03-31 15:07:36,484 INFO conf.Configuration: resource-types.xml not found
+2026-03-31 15:07:36,485 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2026-03-31 15:07:37,318 INFO impl.YarnClientImpl: Submitted application application_1774949379395_0001
+2026-03-31 15:07:37,407 INFO mapreduce.Job: The url to track the job: http://Dell:8088/proxy/application_1774949379395_0001/
+2026-03-31 15:07:37,411 INFO mapreduce.Job: Running job: job_1774949379395_0001
+2026-03-31 15:07:48,718 INFO mapreduce.Job: Job job_1774949379395_0001 running in uber mode : false
+2026-03-31 15:07:48,720 INFO mapreduce.Job:  map 0% reduce 0%
+2026-03-31 15:07:52,823 INFO mapreduce.Job:  map 100% reduce 0%
+2026-03-31 15:07:58,892 INFO mapreduce.Job:  map 100% reduce 100%
+2026-03-31 15:07:58,908 INFO mapreduce.Job: Job job_1774949379395_0001 completed successfully
+2026-03-31 15:07:59,013 INFO mapreduce.Job: Counters: 54
+        File System Counters
+                FILE: Number of bytes read=71
+                FILE: Number of bytes written=555265
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=166
+                HDFS: Number of bytes written=41
+                HDFS: Number of read operations=8
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Launched reduce tasks=1
+                Data-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=2526
+                Total time spent by all reduces in occupied slots (ms)=2911
+                Total time spent by all map tasks (ms)=2526
+                Total time spent by all reduce tasks (ms)=2911
+                Total vcore-milliseconds taken by all map tasks=2526
+                Total vcore-milliseconds taken by all reduce tasks=2911
+                Total megabyte-milliseconds taken by all map tasks=2586624
+                Total megabyte-milliseconds taken by all reduce tasks=2980864
+        Map-Reduce Framework
+                Map input records=3
+                Map output records=9
+                Map output bytes=80
+                Map output materialized bytes=71
+                Input split bytes=121
+                Combine input records=9
+                Combine output records=6
+                Reduce input groups=6
+                Reduce shuffle bytes=71
+                Reduce input records=6
+                Reduce output records=6
+                Spilled Records=12
+                Shuffled Maps =1
+                Failed Shuffles=0
+                Merged Map outputs=1
+                GC time elapsed (ms)=75
+                CPU time spent (ms)=795
+                Physical memory (bytes) snapshot=538796032
+                Virtual memory (bytes) snapshot=779403264
+                Total committed heap usage (bytes)=430440448
+                Peak Map Physical memory (bytes)=323702784
+                Peak Map Virtual memory (bytes)=442695680
+                Peak Reduce Physical memory (bytes)=215093248
+                Peak Reduce Virtual memory (bytes)=336715776
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters
+                Bytes Read=45
+        File Output Format Counters
+                Bytes Written=41
+
+C:\Windows\System32>hdfs dfs -ls /user/gauta/My_folder/output
+Found 2 items
+-rw-r--r--   1 gauta supergroup          0 2026-03-31 15:07 /user/gauta/My_folder/output/_SUCCESS
+-rw-r--r--   1 gauta supergroup         41 2026-03-31 15:07 /user/gauta/My_folder/output/part-r-00000
+
+C:\Windows\System32>hdfs dfs -cat /user/gauta/My_folder/output/part-r-00000
+Car     2
+Dear    1
+bear    2
+car     1
+dear    1
+river   2
+
+C:\Windows\System32>
