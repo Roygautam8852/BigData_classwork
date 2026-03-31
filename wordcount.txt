@@ -249,3 +249,23 @@ used    1
 C:\Windows\System32>
 
 
+
+
+C:\Windows\System32>hdfs dfs -mkdir /RJ
+
+C:\Windows\System32>hdfs dfs -touchz /RJ/test
+
+C:\Windows\System32>hdfs dfs -appendToFile - /RJ/test
+hello my name is gautam kumar
+i am from bihar, vaishali
+
+Terminate batch job (Y/N)? y
+
+C:\Windows\System32>hdfs dfs -cat  /RJ/test
+hello my name is gautam kumar
+i am from bihar, vaishali
+
+
+C:\Windows\System32>
+
+
